@@ -1,12 +1,12 @@
-// Wait for the DOM to fully load before executing the script
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     // Form Selection
-    const form = document.getElementById('registration-form'); // Select the form
-    const feedbackDiv = document.getElementById('form-feedback'); // Select the feedback div
+    const form = document.getElementById('registration-form');
+    // Feedback Division Selection
+    const feedbackDiv = document.getElementById('form-feedback');
 
-    // Form Submission Event Listener
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent form submission
+    // Form Submission and Event Prevention
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
 
         // Retrieve User Inputs
         const username = document.getElementById('username').value.trim();
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Email Validation
         if (!email.includes('@') || !email.includes('.')) {
             isValid = false;
-            messages.push("Email must contain '@' and a domain.");
+            messages.push("Please enter a valid email address.");
         }
 
         // Password Validation
@@ -35,14 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
             messages.push("Password must be at least 8 characters long.");
         }
 
-        // Feedback Display Logic
-        feedbackDiv.style.display = "block"; // Make feedbackDiv visible
+        // Displaying Feedback
+        feedbackDiv.style.display = "block";
+
         if (isValid) {
             feedbackDiv.textContent = "Registration successful!";
-            feedbackDiv.style.color = "#28a745"; // Green color for success
+            feedbackDiv.style.color = "#28a745";
         } else {
-            feedbackDiv.innerHTML = messages.join('<br>'); // Join messages with line breaks
-            feedbackDiv.style.color = "#dc3545"; // Red color for errors
+            feedbackDiv.innerHTML = messages.join("<br>");
+            feedbackDiv.style.color = "#dc3545";
         }
     });
 });
