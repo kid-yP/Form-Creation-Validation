@@ -1,6 +1,8 @@
-document.addEventListener('DOMContentLoaded', async function () {
-    // Define the API URL
-    const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+// Define the API URL
+const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
+// Async Function to Fetch User Data
+async function fetchUserData() {
     // Select the Data Container Element
     const dataContainer = document.getElementById('api-data');
 
@@ -27,4 +29,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Error Handling
         dataContainer.innerHTML = 'Failed to load user data.';
     }
-});
+}
+
+// Invoke fetchUserData on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', fetchUserData);
