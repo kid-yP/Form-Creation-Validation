@@ -1,38 +1,41 @@
+// Wait for the DOM to fully load before executing the script
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('registration-form');
-    const feedbackDiv = document.getElementById('form-feedback');
+    // Form Selection
+    const form = document.getElementById('registration-form'); // Select the form
+    const feedbackDiv = document.getElementById('form-feedback'); // Select the feedback div
 
+    // Form Submission Event Listener
     form.addEventListener('submit', (event) => {
         event.preventDefault(); // Prevent form submission
 
-        // Retrieve and trim user inputs
+        // Retrieve User Inputs
         const username = document.getElementById('username').value.trim();
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        // Initialize validation variables
+        // Initialize Validation Variables
         let isValid = true;
         const messages = [];
 
-        // Username validation
+        // Username Validation
         if (username.length < 3) {
             isValid = false;
             messages.push("Username must be at least 3 characters long.");
         }
 
-        // Email validation
+        // Email Validation
         if (!email.includes('@') || !email.includes('.')) {
             isValid = false;
             messages.push("Email must contain '@' and a domain.");
         }
 
-        // Password validation
+        // Password Validation
         if (password.length < 8) {
             isValid = false;
             messages.push("Password must be at least 8 characters long.");
         }
 
-        // Display feedback
+        // Feedback Display Logic
         feedbackDiv.style.display = "block"; // Make feedbackDiv visible
         if (isValid) {
             feedbackDiv.textContent = "Registration successful!";
